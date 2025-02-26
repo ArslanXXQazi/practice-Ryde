@@ -22,6 +22,16 @@ TextEditingController emailController=TextEditingController();
 
  FirebaseAuth _auth=FirebaseAuth.instance;
 
+ @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    nameController.dispose();
+    passwordController.dispose();
+    emailController.dispose();
+    
+  }
+
 
   @override
   Widget build(BuildContext context) {

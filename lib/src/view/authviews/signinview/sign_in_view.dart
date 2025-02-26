@@ -59,7 +59,7 @@ class _SignInViewState extends State<SignInView> {
                   CustomText(text: "Don’t have an account?",color: Theme.of(context).colorScheme.secondary),
                   TextButton(
                     onPressed: (){
-                      //Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignUpView()));
+                      Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignUpView()));
                     },
                     child: BoldText(text: 'Sign up',fontSize: 16,color: Theme.of(context).colorScheme.secondary),
                   ),
