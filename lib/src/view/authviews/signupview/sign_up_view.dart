@@ -53,7 +53,20 @@ TextEditingController emailController=TextEditingController();
               ),
               CustomText(text: 'Your Name',color: Theme.of(context).colorScheme.secondary),
               CustomTextFormField(hintText: 'Enter your name', controller: nameController),
-              
+              CustomText(text: 'Email or Phone',color: Theme.of(context).colorScheme.secondary),
+              CustomTextFormField(hintText: 'Enter your or phone number', controller: emailController),
+              CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
+              PasswordTextFormField(hintText: 'Create a password', controller:passwordController),
+              CustomButton(
+                onPressed: ()
+                {
+                  _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
+                    Utils().toastMsg(
+                       "Sign Up Successfully",
+                        context,
+                        Theme.of(context).colorScheme.background,
+                        ToastificationType.success
+                    );
                      Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
                   }).onError((e,catcherror){
                    Utils().toastMsg(
