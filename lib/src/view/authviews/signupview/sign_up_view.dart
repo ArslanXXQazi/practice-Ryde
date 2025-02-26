@@ -49,7 +49,8 @@ TextEditingController emailController=TextEditingController();
               CustomButton(
                 onPressed: ()
                 {
-                  Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
+                  _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString());
+                 // Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
                 },
                 text: 'Sign Up',
                 color:Theme.of(context).colorScheme.primary,
