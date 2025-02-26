@@ -49,10 +49,7 @@ class _SignInViewState extends State<SignInView> {
               ],),
               CustomButton(
                 onPressed: (){
-                  if(_formField.currentState!.validate()){
-                     Navigator.push(context,  CupertinoPageRoute(builder: (context)=>NavBarView()));
-                  }
-
+                  Navigator.push(context,  CupertinoPageRoute(builder: (context)=>NavBarView()));
                 },
                 text: 'Log in',
                 color: Theme.of(context).colorScheme.primary,
