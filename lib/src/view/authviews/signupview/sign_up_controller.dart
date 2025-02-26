@@ -14,4 +14,5 @@ class SignUpController extends GetxController{
 
 
 
+
 }

@@ -11,11 +11,11 @@ class _SignUpViewState extends State<SignUpView> {
 
   SignUpController signupcontroller = Get.put(SignUpController());
 
-// TextEditingController nameController=TextEditingController();
-//
-// TextEditingController passwordController=TextEditingController();
-//
-// TextEditingController emailController=TextEditingController();
+TextEditingController nameController=TextEditingController();
+
+TextEditingController passwordController=TextEditingController();
+
+TextEditingController emailController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,11 @@ class _SignUpViewState extends State<SignUpView> {
                 child: BoldText(text: 'Sign Up',color: Theme.of(context).colorScheme.secondary,),
               ),
               CustomText(text: 'Your Name',color: Theme.of(context).colorScheme.secondary),
-              CustomTextFormField(hintText: 'Enter your name', controller: signupcontroller.nameController),
+              CustomTextFormField(hintText: 'Enter your name', controller: nameController),
               CustomText(text: 'Email or Phone',color: Theme.of(context).colorScheme.secondary),
-              CustomTextFormField(hintText: 'Enter your or phone number', controller: signupcontroller.emailController),
+              CustomTextFormField(hintText: 'Enter your or phone number', controller: emailController),
               CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
-              PasswordTextFormField(hintText: 'Create a password', controller:signupcontroller.passwordController),
+              PasswordTextFormField(hintText: 'Create a password', controller:passwordController),
               CustomButton(
                 onPressed: ()
                 {
