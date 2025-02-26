@@ -45,24 +45,7 @@ TextEditingController emailController=TextEditingController();
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(child: Image(image: AssetImage(Appimages.appLogo),color: Theme.of(context).colorScheme.secondary,)),
-              Padding(
-                padding:  EdgeInsets.symmetric(vertical: height*.02),
-                child: BoldText(text: 'Sign Up',color: Theme.of(context).colorScheme.secondary,),
-              ),
-              CustomText(text: 'Your Name',color: Theme.of(context).colorScheme.secondary),
-              CustomTextFormField(hintText: 'Enter your name', controller: nameController),
-              CustomText(text: 'Email or Phone',color: Theme.of(context).colorScheme.secondary),
-              CustomTextFormField(hintText: 'Enter your or phone number', controller: emailController),
-              CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
-              PasswordTextFormField(hintText: 'Create a password', controller:passwordController),
-              CustomButton(
-                onPressed: ()
-                {
-                  _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
-                    Utils().toastMsg(
-                       "Sign Up Successfully",
+            children: [essfully",
                         context,
                         Theme.of(context).colorScheme.background,
                         ToastificationType.success
