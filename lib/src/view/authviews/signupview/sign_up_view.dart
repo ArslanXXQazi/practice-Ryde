@@ -62,7 +62,7 @@ TextEditingController emailController=TextEditingController();
                   _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
 
                   }).onError((e,catcherror){
-                   Utils().toastMsg(e.toString());
+                   Utils().toastMsg("Error", context);
                   });
                  // Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
                 },
