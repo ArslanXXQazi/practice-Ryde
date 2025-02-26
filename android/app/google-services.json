@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "309681850167",
+    "project_id": "carapp-def83",
+    "storage_bucket": "carapp-def83.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309681850167:android:b309affbf4c4bcfdfafcb2",
+        "android_client_info": {
+          "package_name": "com.example.car_rental"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKfIMU7llksDQ5kI57b4HTFLR4d2FFxJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309681850167:android:c0bec9b876afe7e5fafcb2",
+        "android_client_info": {
+          "package_name": "com.example.practice_ryde"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKfIMU7llksDQ5kI57b4HTFLR4d2FFxJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
