@@ -1,5 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
+
 class SignUpView extends StatefulWidget {
   SignUpView({super.key});
 
@@ -12,10 +17,11 @@ class _SignUpViewState extends State<SignUpView> {
   SignUpController signupcontroller = Get.put(SignUpController());
 
 TextEditingController nameController=TextEditingController();
-
 TextEditingController passwordController=TextEditingController();
-
 TextEditingController emailController=TextEditingController();
+
+ FirebaseAuth _auth=FirebaseAuth.instance;
+
 
   @override
   Widget build(BuildContext context) {
