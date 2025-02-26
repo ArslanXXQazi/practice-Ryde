@@ -11,6 +11,8 @@ class Utils{
       context: context,
       title: Text(msg),
       autoCloseDuration: const Duration(seconds: 5),
+      type: ToastificationType.error,
+      primaryColor: Colors.green,
     );
   }
 
