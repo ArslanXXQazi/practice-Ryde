@@ -66,7 +66,7 @@ TextEditingController emailController=TextEditingController();
                    Utils().toastMsg(
                      e.toString(),
                      context,
-                     Colors.red,
+                       Theme.of(context).colorScheme.background,
                        ToastificationType.error
                    );
                   });

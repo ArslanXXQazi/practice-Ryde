@@ -11,9 +11,9 @@ class Utils{
     toastification.show(
       context: context,
       title: CustomText(text: msg,color: color),
-      autoCloseDuration: const Duration(seconds: 5),
+      autoCloseDuration: const Duration(seconds: 3),
       type: type,
-      backgroundColor: Colors.white,
+      backgroundColor:Theme.of(context).colorScheme.secondary,
     );
   }
 
