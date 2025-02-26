@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:practice_ryde/src/utils/utils.dart';
+import 'package:toastification/toastification.dart';
 
 
 
@@ -62,7 +63,12 @@ TextEditingController emailController=TextEditingController();
                   _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
 
                   }).onError((e,catcherror){
-                   Utils().toastMsg(e.toString(), context,Colors.red,);
+                   Utils().toastMsg(
+                     e.toString(),
+                     context,
+                     Colors.red,
+                       ToastificationType.error
+                   );
                   });
                  // Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
                 },
