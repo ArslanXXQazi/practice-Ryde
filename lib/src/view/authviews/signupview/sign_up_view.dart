@@ -63,13 +63,13 @@ TextEditingController emailController=TextEditingController();
                   _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
                     Utils().toastMsg(
                        "Sign Up Successfully",
-                        context,   ToastificationType.success
+                        context,
+                        Theme.of(context).colorScheme.background,
+                        ToastificationType.success
                     );
                      Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
                   }).onError((e,catcherror){
-                   Utils().toastMsg(
-                     e.toString(),
-                     context,
+                   
                        Theme.of(context).colorScheme.background,
                        ToastificationType.error
                    );
