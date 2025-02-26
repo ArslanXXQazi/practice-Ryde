@@ -13,6 +13,7 @@ class Utils{
       autoCloseDuration: const Duration(seconds: 5),
       type: ToastificationType.error,
       primaryColor: Colors.green,
+      backgroundColor: Colors.white,
     );
   }
 
