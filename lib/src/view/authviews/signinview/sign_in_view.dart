@@ -32,12 +32,10 @@ class _SignInViewState extends State<SignInView> {
                 padding:  EdgeInsets.symmetric(vertical: height*.02),
                 child: BoldText(text: 'Log In',color: Theme.of(context).colorScheme.secondary,),
               ),
-             Form(child: Column(children: [
-               CustomText(text: 'Email',color: Theme.of(context).colorScheme.secondary),
-               CustomTextFormField(hintText: 'Enter your email', controller: emailController),
-               CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
-               PasswordTextFormField(hintText: 'Enter your password', controller: passwordController),
-             ],)),
+              CustomText(text: 'Email',color: Theme.of(context).colorScheme.secondary),
+              CustomTextFormField(hintText: 'Enter your email', controller: emailController),
+              CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
+              PasswordTextFormField(hintText: 'Enter your password', controller: passwordController),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
