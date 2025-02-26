@@ -5,11 +5,11 @@ import 'package:toastification/toastification.dart';
 
 class Utils{
 
-  void toastMsg()
+  void toastMsg( String msg)
   {
     toastification.show(
-      context: context,
-      title: Text('Hello, world!'),
+      //context: context,
+      title: Text(msg),
       autoCloseDuration: const Duration(seconds: 5),
     );
   }
