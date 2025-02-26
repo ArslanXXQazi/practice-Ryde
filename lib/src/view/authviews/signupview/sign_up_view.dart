@@ -29,7 +29,6 @@ TextEditingController emailController=TextEditingController();
     nameController.dispose();
     passwordController.dispose();
     emailController.dispose();
-    
   }
 
 
