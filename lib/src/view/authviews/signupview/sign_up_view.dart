@@ -67,7 +67,16 @@ TextEditingController emailController=TextEditingController();
                         Theme.of(context).colorScheme.background,
                         ToastificationType.success
                     );
-              lder: (context)=>SignInView()));
+                     Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
+                  }).onError((e,catcherror){
+                   Utils().toastMsg(
+                     e.toString(),
+                     context,
+                       Theme.of(context).colorScheme.background,
+                       ToastificationType.error
+                   );
+                  });
+                 // Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
                 },
                 text: 'Sign Up',
                 color:Theme.of(context).colorScheme.primary,
