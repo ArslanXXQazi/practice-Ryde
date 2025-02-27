@@ -58,6 +58,7 @@ TextEditingController emailController=TextEditingController();
               CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
               PasswordTextFormField(hintText: 'Create a password', controller:passwordController),
               CustomButton(
+                loading: loading,
                 onPressed: ()
                 {
                   setState(() {
