@@ -16,7 +16,7 @@ class _SignInViewState extends State<SignInView> {
 
   TextEditingController passwordController=TextEditingController();
   TextEditingController emailController=TextEditingController();
-
+  bool loading=false;
   FirebaseAuth _auth=FirebaseAuth.instance;
 
   void signIn()
@@ -68,8 +68,9 @@ class _SignInViewState extends State<SignInView> {
                       child: CustomText(text: "Forgot Password?",color: Theme.of(context).colorScheme.secondary)),
               ],),
               CustomButton(
+                loading: loading,
                 onPressed: (){
-                  Navigator.push(context,  CupertinoPageRoute(builder: (context)=>NavBarView()));
+                 signIn();
                 },
                 text: 'Log in',
                 color: Theme.of(context).colorScheme.primary,
