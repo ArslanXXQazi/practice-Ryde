@@ -15,12 +15,12 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-
   SignUpController signupcontroller = Get.put(SignUpController());
 bool loading=false;
 TextEditingController nameController=TextEditingController();
 TextEditingController passwordController=TextEditingController();
 TextEditingController emailController=TextEditingController();
+  final _formField=GlobalKey<FormState> ();
 
  FirebaseAuth _auth=FirebaseAuth.instance;
 
@@ -83,12 +83,18 @@ TextEditingController emailController=TextEditingController();
                 padding:  EdgeInsets.symmetric(vertical: height*.02),
                 child: BoldText(text: 'Sign Up',color: Theme.of(context).colorScheme.secondary,),
               ),
+            Form(
+              key: _formField,
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
               CustomText(text: 'Your Name',color: Theme.of(context).colorScheme.secondary),
               CustomTextFormField(hintText: 'Enter your name', controller: nameController),
               CustomText(text: 'Email or Phone',color: Theme.of(context).colorScheme.secondary),
               CustomTextFormField(hintText: 'Enter your or phone number', controller: emailController),
               CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
               PasswordTextFormField(hintText: 'Create a password', controller:passwordController),
+            ],)),
               CustomButton(
                 loading: loading,
                 onPressed: ()
