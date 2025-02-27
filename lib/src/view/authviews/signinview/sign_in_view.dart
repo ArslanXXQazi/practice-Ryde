@@ -76,7 +76,9 @@ class _SignInViewState extends State<SignInView> {
               ),
               Form(
                 key: _formField,
-                  child: Column(children: [
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                 CustomText(text: 'Email',color: Theme.of(context).colorScheme.secondary),
                 CustomTextFormField(hintText: 'Enter your email', controller: emailController),
                 CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
@@ -94,7 +96,9 @@ class _SignInViewState extends State<SignInView> {
               CustomButton(
                 loading: loading,
                 onPressed: (){
-                 signIn();
+                if(_formField.currentState!.validate()){
+                  signIn();
+                }
                 },
                 text: 'Log in',
                 color: Theme.of(context).colorScheme.primary,

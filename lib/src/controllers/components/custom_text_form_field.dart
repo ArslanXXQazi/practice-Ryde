@@ -47,7 +47,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Appcolor.grey),
             ),
-            border:InputBorder.none,
+           // border:InputBorder.none,
             hintText: widget.hintText,
           hintStyle: TextStyle(color: Colors.grey,fontFamily: 'satoshi'),
           suffixIcon:Icon(widget.suffixIcon,color: Colors.grey,size: 30,))
