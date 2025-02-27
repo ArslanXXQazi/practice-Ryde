@@ -64,6 +64,9 @@ TextEditingController emailController=TextEditingController();
                     loading=true;
                   });
                   _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
+                    setState(() {
+                      loading=false;
+                    });
                     Utils().toastMsg(
                        "Sign Up Successfully",
                         context,
