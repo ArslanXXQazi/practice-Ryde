@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
                 side: BorderSide(color: borderColor),
               )
           ),
-          child: Center(child: loading ? CircularProgressIndicator():CustomText(text: text,color: fontColor,fontSize: 16,),)),
+          child: Center(child: loading ? CircularProgressIndicator(color: Colors.white,):CustomText(text: text,color: fontColor,fontSize: 16,),)),
     );
   }
 }
