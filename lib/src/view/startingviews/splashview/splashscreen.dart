@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 
@@ -10,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
+  @override
   void initState()
   {
     super.initState();
@@ -18,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
