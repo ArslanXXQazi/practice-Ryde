@@ -99,7 +99,9 @@ TextEditingController emailController=TextEditingController();
                 loading: loading,
                 onPressed: ()
                 {
-                  signUp();
+                 if(_formField.currentState!.validate()){
+                   signUp();
+                 }
                 },
                 text: 'Sign Up',
                 color:Theme.of(context).colorScheme.primary,
