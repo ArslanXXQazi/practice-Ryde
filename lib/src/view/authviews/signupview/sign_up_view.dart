@@ -33,6 +33,35 @@ TextEditingController emailController=TextEditingController();
     emailController.dispose();
   }
 
+  void signUp()
+  {
+    setState(() {
+      loading=true;
+    });
+    _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
+      setState(() {
+        loading=false;
+      });
+      Utils().toastMsg(
+          "Sign Up Successfully",
+          context,
+          Theme.of(context).colorScheme.background,
+          ToastificationType.success
+      );
+      Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
+    }).onError((e,catcherror){
+      setState(() {
+        loading=false;
+      });
+      Utils().toastMsg(
+          e.toString(),
+          context,
+          Theme.of(context).colorScheme.background,
+          ToastificationType.error
+      );
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +90,7 @@ TextEditingController emailController=TextEditingController();
                 loading: loading,
                 onPressed: ()
                 {
-                 
+
                 },
                 text: 'Sign Up',
                 color:Theme.of(context).colorScheme.primary,
