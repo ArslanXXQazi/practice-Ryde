@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
+import 'package:practice_ryde/src/utils/utils.dart';
+import 'package:toastification/toastification.dart';
 
 class SignInView extends StatefulWidget {
   SignInView({super.key});
@@ -24,7 +26,12 @@ class _SignInViewState extends State<SignInView> {
         password: passwordController.text).then((value){
 
     }).onError((e,handlee) {
-      
+      Utils().toastMsg(
+          e.toString(),
+          context,
+          Theme.of(context).colorScheme.background,
+          ToastificationType.error
+      );
     });
   }
 
