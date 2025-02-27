@@ -60,6 +60,9 @@ TextEditingController emailController=TextEditingController();
               CustomButton(
                 onPressed: ()
                 {
+                  setState(() {
+                    loading=true;
+                  });
                   _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
                     Utils().toastMsg(
                        "Sign Up Successfully",
