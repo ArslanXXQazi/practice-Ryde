@@ -68,9 +68,9 @@ class _ProfileNavViewState extends State<ProfileNavView> {
               ),
               LineContainer(),
               ProfileIconRow(
-                  onTap: ()
+                  onTap: () async
                   {
-                    auth.signOut().then((onValue){
+                  await auth.signOut().then((onValue){
                       Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
                     }).onError((error,handleError){
 
