@@ -62,7 +62,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Appcolor.yellow,),
+              borderSide: BorderSide(color: Colors.red,),
             ),
             border:InputBorder.none,
             hintText: widget.hintText,
@@ -177,7 +177,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: Appcolor.yellow,),
+            borderSide: BorderSide(color: Colors.red,),
           ),
           border: InputBorder.none,
           hintText: widget.hintText,
