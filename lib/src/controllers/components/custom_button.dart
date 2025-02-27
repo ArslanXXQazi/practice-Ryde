@@ -1,6 +1,6 @@
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 class CustomButton extends StatelessWidget {
-
+  bool loading;
   String text;
   VoidCallback onPressed;
   Color color;
@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
      this.color=Colors.yellow,
      this.fontColor=Colors.white,
      this.borderColor=Colors.grey,
+     this.loading=false
    });
 
   @override
