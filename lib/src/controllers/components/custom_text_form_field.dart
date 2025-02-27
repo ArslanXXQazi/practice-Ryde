@@ -152,6 +152,10 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: Appcolor.grey),
           ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.red),
+          ),
           border: InputBorder.none,
           hintText: widget.hintText,
           hintStyle: TextStyle(color: Colors.grey,fontFamily: 'satoshi'),
