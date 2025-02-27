@@ -29,6 +29,10 @@ class _SignInViewState extends State<SignInView> {
         password: passwordController.text).then((value){
       setState(() {
         loading=false;
+
+
+        Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
+
       });
 
     }).onError((e,handlee) {
