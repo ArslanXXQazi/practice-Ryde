@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/components/profile_container.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 
@@ -69,7 +70,11 @@ class _ProfileNavViewState extends State<ProfileNavView> {
               ProfileIconRow(
                   onTap: ()
                   {
-                    auth.signOut().then((onValue){}).onError((error,handleError){});
+                    auth.signOut().then((onValue){
+                      Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
+                    }).onError((error,handleError){
+
+                    });
                   },
                   image: Appimages.logout,
                   text: 'Log Out',
