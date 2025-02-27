@@ -29,8 +29,14 @@ class _SignInViewState extends State<SignInView> {
         password: passwordController.text).then((value){
       setState(() {
         loading=false;
-
-
+        Utils().toastMsg(
+            "Login Successfully",
+            context,
+            Theme.of(context).colorScheme.background,
+            ToastificationType.success
+        );
+        emailController.clear();
+        passwordController.clear();
         Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
 
       });
