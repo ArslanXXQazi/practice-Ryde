@@ -89,7 +89,7 @@ TextEditingController emailController=TextEditingController();
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               CustomText(text: 'Your Name',color: Theme.of(context).colorScheme.secondary),
-              CustomTextFormField(hintText: 'Enter your name', controller: nameController),
+              CustomTextFormField(hintText: 'Enter your name', controller: nameController,msg: "Enter Your Name",),
               CustomText(text: 'Email or Phone',color: Theme.of(context).colorScheme.secondary),
               CustomTextFormField(hintText: 'Enter your or phone number', controller: emailController),
               CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),

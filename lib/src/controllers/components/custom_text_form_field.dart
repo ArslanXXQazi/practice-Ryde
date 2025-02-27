@@ -4,13 +4,15 @@ import 'package:practice_ryde/src/controllers/constants/linker.dart';
 class CustomTextFormField extends StatefulWidget {
 
   String hintText;
+  String msg;
   TextEditingController controller;
   IconData? suffixIcon;
 
    CustomTextFormField({super.key,
      required this.hintText,
      required this.controller,
-     this.suffixIcon
+     this.suffixIcon,
+     this.msg='Enter Email',
    });
 
   @override
@@ -18,6 +20,8 @@ class CustomTextFormField extends StatefulWidget {
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
+
+  bool hasError=false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         validator: (value){
           if(value!.isEmpty)
             {
-              return "Enter Email";
+              return widget.msg;
             }
           return null;
         },
@@ -39,9 +43,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             fontFamily: 'satoshi'
         ),
         decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: hasError
+                ? OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Appcolor.yellow),
+              borderSide: BorderSide(color: Colors.red, width: 2),
+            )
+                : OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: Appcolor.yellow, width: 2),
             ),
             enabledBorder:  OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
