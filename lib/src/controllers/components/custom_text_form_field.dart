@@ -134,6 +134,7 @@ class PasswordTextFormField extends StatefulWidget {
 
 class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
   bool isPassword = true;
+  bool hasError=false;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +158,12 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
             fontFamily: 'satoshi'
         ),
         decoration: InputDecoration(
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: hasError ?
+          OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.red),
+          )
+              : OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: Appcolor.yellow),
           ),
@@ -168,6 +174,10 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: Colors.red),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Appcolor.yellow,),
           ),
           border: InputBorder.none,
           hintText: widget.hintText,
