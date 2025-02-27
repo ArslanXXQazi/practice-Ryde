@@ -48,6 +48,9 @@ TextEditingController emailController=TextEditingController();
           Theme.of(context).colorScheme.background,
           ToastificationType.success
       );
+      nameController.clear();
+      emailController.clear();
+      passwordController.clear();
       Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
     }).onError((e,catcherror){
       setState(() {
