@@ -16,6 +16,7 @@ class _SignInViewState extends State<SignInView> {
 
   TextEditingController passwordController=TextEditingController();
   TextEditingController emailController=TextEditingController();
+  final _formField=GlobalKey<FormState> ();
   bool loading=false;
   FirebaseAuth _auth=FirebaseAuth.instance;
 
@@ -54,7 +55,7 @@ class _SignInViewState extends State<SignInView> {
     });
   }
 
-  final _formField=GlobalKey<FormState> ();
+
 
   @override
   Widget build(BuildContext context) {
