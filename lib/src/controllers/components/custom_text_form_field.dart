@@ -43,14 +43,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             fontFamily: 'satoshi'
         ),
         decoration: InputDecoration(
-            focusedBorder: hasError
-                ? OutlineInputBorder(
+            focusedBorder: hasError ?
+            OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Colors.red, width: 2),
+              borderSide: BorderSide(color: Colors.red),
             )
                 : OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(color: Appcolor.yellow, width: 2),
+              borderSide: BorderSide(color: Appcolor.yellow),
             ),
             enabledBorder:  OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -59,6 +59,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(color: Colors.red),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: Appcolor.yellow,),
             ),
             border:InputBorder.none,
             hintText: widget.hintText,
