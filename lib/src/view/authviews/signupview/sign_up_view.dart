@@ -75,6 +75,9 @@ TextEditingController emailController=TextEditingController();
                     );
                      Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
                   }).onError((e,catcherror){
+                    setState(() {
+                      loading=false;
+                    });
                    Utils().toastMsg(
                      e.toString(),
                      context,
