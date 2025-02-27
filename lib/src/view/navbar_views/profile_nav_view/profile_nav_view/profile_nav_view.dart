@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:practice_ryde/src/controllers/components/profile_container.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 
@@ -13,6 +14,9 @@ class ProfileNavView extends StatefulWidget {
 
 class _ProfileNavViewState extends State<ProfileNavView> {
   @override
+
+  final FirebaseAuth auth=FirebaseAuth.instance;
+
   Widget build(BuildContext context) {
     final width=MediaQuery.sizeOf(context).width;
     final height=MediaQuery.sizeOf(context).height;
@@ -63,7 +67,10 @@ class _ProfileNavViewState extends State<ProfileNavView> {
               ),
               LineContainer(),
               ProfileIconRow(
-                  onTap: (){},
+                  onTap: ()
+                  {
+                    auth.signOut().then((onValue){}).onError((error,handleError){});
+                  },
                   image: Appimages.logout,
                   text: 'Log Out',
               ),

@@ -15,22 +15,22 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState()
   {
     super.initState();
-    // login();
-    Future.delayed(Duration(seconds: 3),(){
-      Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
-    });
+    login();
+    // Future.delayed(Duration(seconds: 3),(){
+    //   Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
+    // });
   }
 
- //  void login()
- // async {
- //    User? user=await FirebaseAuth.instance.currentUser;
- //    if(user!=null){
- //      Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
- //    }
- //    else{
- //      Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
- //    }
- //  }
+   void login()
+ async {
+    User? user=await FirebaseAuth.instance.currentUser;
+    if(user!=null){
+      Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
+    }
+    else{
+      Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
+    }
+  }
 
 
   @override
