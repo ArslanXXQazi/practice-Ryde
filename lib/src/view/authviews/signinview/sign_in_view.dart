@@ -19,7 +19,13 @@ class _SignInViewState extends State<SignInView> {
 
   void signIn()
   {
-    
+    _auth.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text).then((value){
+
+    }).onError((e,handlee) {
+      
+    });
   }
 
   final _formField=GlobalKey<FormState> ();
