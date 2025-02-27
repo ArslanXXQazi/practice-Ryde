@@ -21,11 +21,20 @@ class _SignInViewState extends State<SignInView> {
 
   void signIn()
   {
+    setState(() {
+      loading=true;
+    });
     _auth.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text).then((value){
+      setState(() {
+        loading=false;
+      });
 
     }).onError((e,handlee) {
+      setState(() {
+        loading=false;
+      });
       Utils().toastMsg(
           e.toString(),
           context,
