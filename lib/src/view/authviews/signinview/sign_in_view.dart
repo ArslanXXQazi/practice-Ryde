@@ -20,12 +20,12 @@ class _SignInViewState extends State<SignInView> {
   bool loading=false;
   FirebaseAuth _auth=FirebaseAuth.instance;
 
-  void signIn()
+  void signIn() async
   {
     setState(() {
       loading=true;
     });
-    _auth.signInWithEmailAndPassword(
+    await _auth.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text).then((value){
       setState(() {

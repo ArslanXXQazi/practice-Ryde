@@ -33,12 +33,12 @@ TextEditingController emailController=TextEditingController();
     emailController.dispose();
   }
 
-  void signUp()
+  void signUp() async
   {
     setState(() {
       loading=true;
     });
-    _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
+   await _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
       setState(() {
         loading=false;
       });
