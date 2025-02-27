@@ -90,7 +90,7 @@ TextEditingController emailController=TextEditingController();
                 loading: loading,
                 onPressed: ()
                 {
-
+                  signUp();
                 },
                 text: 'Sign Up',
                 color:Theme.of(context).colorScheme.primary,
