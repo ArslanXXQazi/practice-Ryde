@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 
@@ -12,6 +14,13 @@ class _SignInViewState extends State<SignInView> {
 
   TextEditingController passwordController=TextEditingController();
   TextEditingController emailController=TextEditingController();
+
+  FirebaseAuth _auth=FirebaseAuth.instance;
+
+  void signIn()
+  {
+    
+  }
 
   final _formField=GlobalKey<FormState> ();
 
