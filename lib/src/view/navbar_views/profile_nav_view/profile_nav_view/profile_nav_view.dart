@@ -96,8 +96,12 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                                   ),
                                   SizedBox(width: width*.03,),
                                   ElevatedButton(
-                                      onPressed: (){
+                                      onPressed: () async{
+                                        await auth.signOut().then((onValue){
+                                          Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
+                                        }).onError((error,handleError){
 
+                                        });
                                       },
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor: Theme.of(context).colorScheme.primary,
