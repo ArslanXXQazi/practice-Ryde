@@ -98,7 +98,9 @@ TextEditingController emailController=TextEditingController();
               PasswordTextFormField(hintText: 'Create a password', controller:signupcontroller.passwordController),
             ],)),
 
-              
+              Obx(()=>CustomButton(
+                  text: "Sign Up",
+                  onPressed: (){}))
               // CustomButton(
               //   loading: loading,
               //   onPressed: ()
