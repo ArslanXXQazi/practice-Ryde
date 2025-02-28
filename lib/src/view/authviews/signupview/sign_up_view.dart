@@ -21,6 +21,7 @@ TextEditingController nameController=TextEditingController();
 TextEditingController passwordController=TextEditingController();
 TextEditingController emailController=TextEditingController();
   final _formField=GlobalKey<FormState> ();
+  final SignUpController signupController = Get.put(SignUpController());
 
 // FirebaseAuth _auth=FirebaseAuth.instance;
 
@@ -90,24 +91,26 @@ TextEditingController emailController=TextEditingController();
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               CustomText(text: 'Your Name',color: Theme.of(context).colorScheme.secondary),
-              CustomTextFormField(hintText: 'Enter your name', controller: nameController,msg: "Enter Your Name",),
+              CustomTextFormField(hintText: 'Enter your name', controller: signupcontroller.nameController,msg: "Enter Your Name",),
               CustomText(text: 'Email or Phone',color: Theme.of(context).colorScheme.secondary),
-              CustomTextFormField(hintText: 'Enter your or phone number', controller: emailController),
+              CustomTextFormField(hintText: 'Enter your or phone number', controller: signupcontroller.emailController),
               CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
-              PasswordTextFormField(hintText: 'Create a password', controller:passwordController),
+              PasswordTextFormField(hintText: 'Create a password', controller:signupcontroller.passwordController),
             ],)),
-              CustomButton(
-                loading: loading,
-                onPressed: ()
-                {
-                 if(_formField.currentState!.validate()){
-                   signUp();
-                 }
-                },
-                text: 'Sign Up',
-                color:Theme.of(context).colorScheme.primary,
-                borderColor: Theme.of(context).colorScheme.primary,
-              ),
+
+              
+              // CustomButton(
+              //   loading: loading,
+              //   onPressed: ()
+              //   {
+              //    if(_formField.currentState!.validate()){
+              //      signUp();
+              //    }
+              //   },
+              //   text: 'Sign Up',
+              //   color:Theme.of(context).colorScheme.primary,
+              //   borderColor: Theme.of(context).colorScheme.primary,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
