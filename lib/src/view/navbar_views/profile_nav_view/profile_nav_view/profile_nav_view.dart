@@ -68,7 +68,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
               ),
               LineContainer(),
               ProfileIconRow(
-                  onTap: () async
+                  onTap: ()
                   {
                     showDialog(
                       context: context,
