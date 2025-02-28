@@ -42,7 +42,7 @@ dependencies:
   get: ^4.6.6
   firebase_core: ^3.12.1
   firebase_auth:
-  toastification: ^3.0.1
+  toastification:
 
 
 dev_dependencies:
