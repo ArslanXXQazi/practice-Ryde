@@ -113,11 +113,6 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                         );
                       },
                     );
-                  await auth.signOut().then((onValue){
-                      Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
-                    }).onError((error,handleError){
-
-                    });
                   },
                   image: Appimages.logout,
                   text: 'Log Out',
