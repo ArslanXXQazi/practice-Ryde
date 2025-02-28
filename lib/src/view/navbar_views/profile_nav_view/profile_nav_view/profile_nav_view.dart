@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:practice_ryde/src/controllers/components/profile_container.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 
@@ -79,6 +80,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               BoldText(text: 'Are you sure you want to log out?',fontSize: 16,color: Theme.of(context).colorScheme.secondary,),
+                              Image(image: AssetImage('assets/alert.png')).animate().rotate(duration: Duration(seconds: 2)),
                               SizedBox(height: height*.02,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
