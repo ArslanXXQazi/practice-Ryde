@@ -22,7 +22,7 @@ TextEditingController passwordController=TextEditingController();
 TextEditingController emailController=TextEditingController();
   final _formField=GlobalKey<FormState> ();
 
- FirebaseAuth _auth=FirebaseAuth.instance;
+// FirebaseAuth _auth=FirebaseAuth.instance;
 
  @override
   void dispose() {
