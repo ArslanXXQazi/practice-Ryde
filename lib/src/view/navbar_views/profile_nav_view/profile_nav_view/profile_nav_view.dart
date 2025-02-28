@@ -94,7 +94,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                                       ),
                                       child:CustomText(text: 'Go Back',color: Theme.of(context).colorScheme.secondary,)
                                   ),
-                                  SizedBox(width: width*.03,),
+                                  SizedBox(width: width*.06,),
                                   ElevatedButton(
                                       onPressed: () async{
                                         await auth.signOut().then((onValue){
