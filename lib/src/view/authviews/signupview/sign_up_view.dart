@@ -100,10 +100,16 @@ TextEditingController emailController=TextEditingController();
 
               Obx(()=>CustomButton(
                  loading: signupcontroller.loading.value,
+                onPressed: ()
+                {
+                  if(_formField.currentState!.validate()){
+                    signupcontroller.signUp(context);
+                  }
+                },
                   text: "Sign Up",
                   color:Theme.of(context).colorScheme.primary,
                    borderColor: Theme.of(context).colorScheme.primary,
-                 
+
               )),
               // CustomButton(
               //   loading: loading,
