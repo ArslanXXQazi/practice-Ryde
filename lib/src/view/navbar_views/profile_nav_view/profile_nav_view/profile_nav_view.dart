@@ -70,6 +70,49 @@ class _ProfileNavViewState extends State<ProfileNavView> {
               ProfileIconRow(
                   onTap: () async
                   {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context){
+                        return AlertDialog(
+                          backgroundColor: Theme.of(context).colorScheme.background,
+                          title:Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BoldText(text: 'Confirm Ride Details',fontSize: 18,color: Theme.of(context).colorScheme.secondary,),
+                              SizedBox(height: height*.01,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ElevatedButton(
+                                      onPressed: (){Navigator.pop(context);},
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Theme.of(context).colorScheme.background,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10),
+                                            side: BorderSide(color: Appcolor.grey),
+                                          )
+                                      ),
+                                      child:CustomText(text: 'Go Back',color: Theme.of(context).colorScheme.secondary,)
+                                  ),
+                                  SizedBox(width: width*.03,),
+                                  ElevatedButton(
+                                      onPressed: (){
+                                        Navigator.push(context, CupertinoPageRoute(builder: (context)=>FindingDriverView()));
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Theme.of(context).colorScheme.primary,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10),
+                                          )
+                                      ),
+                                      child:CustomText(text: 'Confirm',color: Theme.of(context).colorScheme.secondary,)
+                                  ),
+                                ],)
+                            ],
+                          ),
+                        );
+                      },
+                    );
                   await auth.signOut().then((onValue){
                       Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
                     }).onError((error,handleError){
