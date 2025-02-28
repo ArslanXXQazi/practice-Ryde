@@ -15,7 +15,7 @@ class Utils{
       type: type,
       backgroundColor:Theme.of(context).colorScheme.secondary,
       progressBarTheme: ProgressIndicatorThemeData(
-        color: 
+        color: Theme.of(context).colorScheme.background
       )
     );
   }
