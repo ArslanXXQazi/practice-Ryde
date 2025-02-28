@@ -14,7 +14,9 @@ class Utils{
       autoCloseDuration: const Duration(seconds: 3),
       type: type,
       backgroundColor:Theme.of(context).colorScheme.secondary,
-      progressBarTheme: ProgressBarTheme()
+      progressBarTheme: ProgressBarTheme(
+        color: Theme.of(context).colorScheme.primary,
+      ),
     );
   }
 
