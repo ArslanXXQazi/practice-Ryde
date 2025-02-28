@@ -78,7 +78,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                           title:Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              BoldText(text: 'Confirm Ride Details',fontSize: 18,color: Theme.of(context).colorScheme.secondary,),
+                              BoldText(text: 'Are you sure you want to logout?',fontSize: 18,color: Theme.of(context).colorScheme.secondary,),
                               SizedBox(height: height*.01,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +97,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                                   SizedBox(width: width*.03,),
                                   ElevatedButton(
                                       onPressed: (){
-                                        Navigator.push(context, CupertinoPageRoute(builder: (context)=>FindingDriverView()));
+
                                       },
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor: Theme.of(context).colorScheme.primary,
@@ -105,7 +105,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                                             borderRadius: BorderRadius.circular(10),
                                           )
                                       ),
-                                      child:CustomText(text: 'Confirm',color: Theme.of(context).colorScheme.secondary,)
+                                      child:CustomText(text: 'Log Out',color: Theme.of(context).colorScheme.secondary,)
                                   ),
                                 ],)
                             ],
