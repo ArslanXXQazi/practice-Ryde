@@ -99,6 +99,7 @@ TextEditingController emailController=TextEditingController();
             ],)),
 
               Obx(()=>CustomButton(
+                 loading: signupcontroller.loading.value,
                   text: "Sign Up",
                   onPressed: (){}))
               // CustomButton(
