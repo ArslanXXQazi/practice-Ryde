@@ -78,7 +78,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                           title:Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              BoldText(text: 'Are you sure you want to logout?',fontSize: 18,color: Theme.of(context).colorScheme.secondary,),
+                              BoldText(text: 'Are you sure you want to log out?',fontSize: 16,color: Theme.of(context).colorScheme.secondary,),
                               SizedBox(height: height*.01,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
