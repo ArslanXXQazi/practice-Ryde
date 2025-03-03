@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
-import 'package:practice_ryde/src/utils/utils.dart';
 import 'package:practice_ryde/src/view/authviews/signinview/sign_in_controller.dart';
 
 class SignInView extends StatefulWidget {
