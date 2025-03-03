@@ -39,14 +39,11 @@
 // }
 
 
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:toastification/toastification.dart';
-import 'dart:math';
-
-import 'otp_screen.dart';  // OTP screen ka import
 
 class ForgotPasswordView extends StatelessWidget {
   ForgotPasswordView({super.key});
@@ -69,17 +66,14 @@ class ForgotPasswordView extends StatelessWidget {
     print("Generated OTP: $otpCode"); // Debugging purpose
 
     try {
-      // Firebase authentication for sending OTP
       await _auth.sendPasswordResetEmail(email: email);
-
       toastification.show(
         context: context,
         title: Text("OTP sent to $email"),
         autoCloseDuration: Duration(seconds: 3),
       );
 
-      // Navigate to OTP confirmation screen
-      Get.to(() => OtpConfirmationView(email: email, generatedOtp: otpCode));
+      Get.to(() => OtpConfirmationView(generatedOtp: otpCode));
     } catch (e) {
       toastification.show(
         context: context,
@@ -122,4 +116,3 @@ class ForgotPasswordView extends StatelessWidget {
     );
   }
 }
-
