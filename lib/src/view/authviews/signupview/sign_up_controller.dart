@@ -48,6 +48,13 @@ class SignUpController extends GetxController{
   TextEditingController emailController = TextEditingController();
   var loading = false.obs;
   FirebaseAuth _auth = FirebaseAuth.instance;
+
+
+  void signUp (BuildContext context) async{
+
+    loading.value=true;
+  }
+
 }
 
 
