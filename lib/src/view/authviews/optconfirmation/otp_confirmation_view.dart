@@ -65,23 +65,30 @@ import 'package:toastification/toastification.dart';
 //import 'reset_password.dart';  // Reset password screen ka import
 
 class OtpConfirmationView extends StatelessWidget {
-  final String generatedOtp;
-  OtpConfirmationView({super.key, required this.generatedOtp});
+  final String otp;
+  OtpConfirmationView({super.key, required this.otp});
 
-  final List<TextEditingController> controllers = List.generate(5, (index) => TextEditingController());
+  final TextEditingController firstController = TextEditingController();
+  final TextEditingController secondController = TextEditingController();
+  final TextEditingController thirdController = TextEditingController();
+  final TextEditingController fourthController = TextEditingController();
+  final TextEditingController fifthController = TextEditingController();
 
   void verifyOTP(BuildContext context) {
-    String enteredOTP = controllers.map((c) => c.text).join();
-    if (enteredOTP == generatedOtp) {
+    String enteredOTP = "${firstController.text}${secondController.text}${thirdController.text}${fourthController.text}${fifthController.text}";
+    if (enteredOTP == otp) {
+      print("✅ OTP Verified!");
       toastification.show(
         context: context,
-        title: Text("OTP Verified!"),
+        title: Text("OTP Verified Successfully!"),
         autoCloseDuration: Duration(seconds: 3),
       );
+      // Yahaan next screen ka navigation ya success message dikhana hai
     } else {
+      print("❌ Invalid OTP");
       toastification.show(
         context: context,
-        title: Text("Invalid OTP"),
+        title: Text("Invalid OTP!"),
         autoCloseDuration: Duration(seconds: 3),
       );
     }
@@ -89,58 +96,38 @@ class OtpConfirmationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
-    final height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width * .04, vertical: height * .07),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Icon(Icons.verified, size: 100, color: Colors.green),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: height * .04),
-                child: Text('OTP Confirmation',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-              ),
-              Text('Please enter the 5-digit code sent to your email for confirmation'),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: height * .02, horizontal: width * .02),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(5, (index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width * .02),
-                      child: SizedBox(
-                        width: 50,
-                        child: TextField(
-                          controller: controllers[index],
-                          textAlign: TextAlign.center,
-                          keyboardType: TextInputType.number,
-                          maxLength: 1,
-                          decoration: InputDecoration(
-                            counterText: "",
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => verifyOTP(context),
-                child: Text("Confirm OTP"),
-              ),
-            ],
-          ),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(child: Icon(Icons.security, size: 100, color: Colors.blue)),
+            SizedBox(height: 20),
+            Text("Enter OTP", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            Text("Enter the 5-digit code sent to your email"),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OtpTextformfield(controller: firstController),
+                OtpTextformfield(controller: secondController),
+                OtpTextformfield(controller: thirdController),
+                OtpTextformfield(controller: fourthController),
+                OtpTextformfield(controller: fifthController),
+              ],
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => verifyOTP(context),
+              child: Text("Verify OTP"),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+

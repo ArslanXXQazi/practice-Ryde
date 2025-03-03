@@ -43,7 +43,7 @@ dependencies:
   firebase_core: ^3.12.1
   firebase_auth:
   toastification:
-  mailer: 
+  mailer:
 
 
 dev_dependencies:

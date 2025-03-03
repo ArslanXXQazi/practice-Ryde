@@ -42,15 +42,18 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:practice_ryde/src/controllers/constants/linker.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 import 'package:toastification/toastification.dart';
+import 'package:mailer/mailer.dart' as mailer;
+
+import '../../../controllers/constants/linker.dart';
 
 class ForgotPasswordView extends StatelessWidget {
   ForgotPasswordView({super.key});
 
   final TextEditingController emailController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  String generatedOtp = '';
 
   void sendOtp(BuildContext context) async {
     String email = emailController.text.trim();
@@ -63,22 +66,32 @@ class ForgotPasswordView extends StatelessWidget {
       return;
     }
 
-    String otpCode = (10000 + Random().nextInt(90000)).toString(); // 5-digit OTP generate
-    print("Generated OTP: $otpCode"); // Debugging purpose
+    generatedOtp = (10000 + Random().nextInt(90000)).toString(); // 5-digit OTP generate
+    print("Generated OTP: $generatedOtp"); // Debugging
+
+    final smtpServer = gmail('your-email@gmail.com', 'your-app-password');
+    final message = Message()
+      ..from = Address('your-email@gmail.com', 'Your App Name')
+      ..recipients.add(email)
+      ..subject = 'Your OTP Code'
+      ..text = 'Your OTP code is: $generatedOtp';
 
     try {
-      await _auth.sendPasswordResetEmail(email: email);
+      final sendReport = await send(message, smtpServer);
+      print('OTP Sent: ${sendReport.toString()}');
+
       toastification.show(
         context: context,
         title: Text("OTP sent to $email"),
         autoCloseDuration: Duration(seconds: 3),
       );
 
-      Get.to(() => OtpConfirmationView(generatedOtp: otpCode));
+      Get.to(() => OtpConfirmationView(otp: generatedOtp));
     } catch (e) {
+      print('Error: $e');
       toastification.show(
         context: context,
-        title: Text("Error: $e"),
+        title: Text("Error sending OTP"),
         autoCloseDuration: Duration(seconds: 3),
       );
     }
@@ -97,7 +110,7 @@ class ForgotPasswordView extends StatelessWidget {
             SizedBox(height: 20),
             Text("Forgot Password?", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
-            Text("Enter your email address to receive a 5-digit OTP"),
+            Text("Enter your email to receive a 5-digit OTP"),
             SizedBox(height: 20),
             TextField(
               controller: emailController,
