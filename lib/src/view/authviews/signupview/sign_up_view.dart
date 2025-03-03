@@ -13,9 +13,6 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   SignUpController signupcontroller = Get.put(SignUpController());
-TextEditingController nameController=TextEditingController();
-TextEditingController passwordController=TextEditingController();
-TextEditingController emailController=TextEditingController();
   final _formField=GlobalKey<FormState> ();
   final SignUpController signupController = Get.put(SignUpController());
 
