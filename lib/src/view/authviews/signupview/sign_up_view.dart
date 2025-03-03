@@ -13,7 +13,6 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   SignUpController signupcontroller = Get.put(SignUpController());
-//bool loading=false;
 TextEditingController nameController=TextEditingController();
 TextEditingController passwordController=TextEditingController();
 TextEditingController emailController=TextEditingController();
