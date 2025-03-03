@@ -37,3 +37,89 @@
 //     );
 //   }
 // }
+
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:toastification/toastification.dart';
+import 'dart:math';
+
+import 'otp_screen.dart';  // OTP screen ka import
+
+class ForgotPasswordView extends StatelessWidget {
+  ForgotPasswordView({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void sendOtp(BuildContext context) async {
+    String email = emailController.text.trim();
+    if (email.isEmpty) {
+      toastification.show(
+        context: context,
+        title: Text("Please enter an email"),
+        autoCloseDuration: Duration(seconds: 3),
+      );
+      return;
+    }
+
+    String otpCode = (10000 + Random().nextInt(90000)).toString(); // 5-digit OTP generate
+    print("Generated OTP: $otpCode"); // Debugging purpose
+
+    try {
+      // Firebase authentication for sending OTP
+      await _auth.sendPasswordResetEmail(email: email);
+
+      toastification.show(
+        context: context,
+        title: Text("OTP sent to $email"),
+        autoCloseDuration: Duration(seconds: 3),
+      );
+
+      // Navigate to OTP confirmation screen
+      Get.to(() => OtpConfirmationView(email: email, generatedOtp: otpCode));
+    } catch (e) {
+      toastification.show(
+        context: context,
+        title: Text("Error: $e"),
+        autoCloseDuration: Duration(seconds: 3),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(child: Icon(Icons.lock_reset, size: 100, color: Colors.blue)),
+            SizedBox(height: 20),
+            Text("Forgot Password?", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            Text("Enter your email address to receive a 5-digit OTP"),
+            SizedBox(height: 20),
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(
+                labelText: "Enter your email",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => sendOtp(context),
+              child: Text("Send OTP"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
