@@ -58,6 +58,9 @@ class SignUpController extends GetxController{
           email: emailController.text.trim(),
           password: passwordController.text.toString()
       );
+
+      User? user=userCredential.user;
+
     }
     catch (e){
 
