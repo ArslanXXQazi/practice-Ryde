@@ -71,10 +71,11 @@ class SignUpController extends GetxController{
           Theme.of(context).colorScheme.background,
           ToastificationType.success,
         );
-
           nameController.clear();
-        emailController.clear();
-        passwordController.clear();
+          emailController.clear();
+          passwordController.clear();
+
+          
         }
 
 
