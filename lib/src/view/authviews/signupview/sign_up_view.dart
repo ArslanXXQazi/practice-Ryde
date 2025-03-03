@@ -16,8 +16,6 @@ class _SignUpViewState extends State<SignUpView> {
   final _formField=GlobalKey<FormState> ();
   final SignUpController signupController = Get.put(SignUpController());
 
-// FirebaseAuth _auth=FirebaseAuth.instance;
-
  @override
   void dispose() {
     // TODO: implement dispose
