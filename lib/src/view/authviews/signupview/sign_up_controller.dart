@@ -61,6 +61,13 @@ class SignUpController extends GetxController{
 
       User? user=userCredential.user;
 
+      if(user ! = null)
+        {
+          await user.updateDisplayName(nameController.text.toString());
+        }
+
+
+
     }
     catch (e){
 
