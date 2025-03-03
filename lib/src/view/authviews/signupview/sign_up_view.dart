@@ -16,41 +16,6 @@ class _SignUpViewState extends State<SignUpView> {
   final _formField=GlobalKey<FormState> ();
   final SignUpController signupController = Get.put(SignUpController());
   
-
-  // void signUp() async
-  // {
-  //   setState(() {
-  //     loading=true;
-  //   });
-  //  await _auth.createUserWithEmailAndPassword(email: emailController.text.toString(), password: passwordController.text.toString()).then((value){
-  //   value.user!.updateDisplayName(nameController.text.toString());
-  //    setState(() {
-  //       loading=false;
-  //     });
-  //     Utils().toastMsg(
-  //         "Sign Up Successfully",
-  //         context,
-  //         Theme.of(context).colorScheme.background,
-  //         ToastificationType.success
-  //     );
-  //     nameController.clear();
-  //     emailController.clear();
-  //     passwordController.clear();
-  //     Navigator.push(context,  CupertinoPageRoute(builder: (context)=>SignInView()));
-  //   }).onError((e,catcherror){
-  //     setState(() {
-  //       loading=false;
-  //     });
-  //     Utils().toastMsg(
-  //         e.toString(),
-  //         context,
-  //         Theme.of(context).colorScheme.background,
-  //         ToastificationType.error
-  //     );
-  //   });
-  // }
-
-
   @override
   Widget build(BuildContext context) {
     final width=MediaQuery.sizeOf(context).width;
