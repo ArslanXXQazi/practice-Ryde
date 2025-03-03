@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 import 'package:practice_ryde/src/utils/utils.dart';
+import 'package:practice_ryde/src/view/authviews/signinview/sign_in_controller.dart';
 import 'package:toastification/toastification.dart';
 
 class SignInView extends StatefulWidget {
@@ -14,46 +15,47 @@ class SignInView extends StatefulWidget {
 
 class _SignInViewState extends State<SignInView> {
 
-  TextEditingController passwordController=TextEditingController();
-  TextEditingController emailController=TextEditingController();
+  // TextEditingController passwordController=TextEditingController();
+  // TextEditingController emailController=TextEditingController();
   final _formField=GlobalKey<FormState> ();
-  bool loading=false;
-  FirebaseAuth _auth=FirebaseAuth.instance;
+  SignInController signInController=Get.put(SignInController());
+  // bool loading=false;
+  // FirebaseAuth _auth=FirebaseAuth.instance;
 
-  void signIn() async
-  {
-    setState(() {
-      loading=true;
-    });
-    await _auth.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text).then((value){
-      setState(() {
-        loading=false;
-        Utils().toastMsg(
-            "Login Successfully",
-            context,
-            Theme.of(context).colorScheme.background,
-            ToastificationType.success
-        );
-        emailController.clear();
-        passwordController.clear();
-        Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
-
-      });
-
-    }).onError((e,handlee) {
-      setState(() {
-        loading=false;
-      });
-      Utils().toastMsg(
-          e.toString(),
-          context,
-          Theme.of(context).colorScheme.background,
-          ToastificationType.error
-      );
-    });
-  }
+  // void signIn() async
+  // {
+  //   setState(() {
+  //     loading=true;
+  //   });
+  //   await _auth.signInWithEmailAndPassword(
+  //       email: emailController.text,
+  //       password: passwordController.text).then((value){
+  //     setState(() {
+  //       loading=false;
+  //       Utils().toastMsg(
+  //           "Login Successfully",
+  //           context,
+  //           Theme.of(context).colorScheme.background,
+  //           ToastificationType.success
+  //       );
+  //       emailController.clear();
+  //       passwordController.clear();
+  //       Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
+  //
+  //     });
+  //
+  //   }).onError((e,handlee) {
+  //     setState(() {
+  //       loading=false;
+  //     });
+  //     Utils().toastMsg(
+  //         e.toString(),
+  //         context,
+  //         Theme.of(context).colorScheme.background,
+  //         ToastificationType.error
+  //     );
+  //   });
+  // }
 
 
 
@@ -80,9 +82,9 @@ class _SignInViewState extends State<SignInView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                 CustomText(text: 'Email',color: Theme.of(context).colorScheme.secondary),
-                CustomTextFormField(hintText: 'Enter your email', controller: emailController),
+                CustomTextFormField(hintText: 'Enter your email', controller: signInController.emailController),
                 CustomText(text: 'Password',color: Theme.of(context).colorScheme.secondary),
-                PasswordTextFormField(hintText: 'Enter your password', controller: passwordController),
+                PasswordTextFormField(hintText: 'Enter your password', controller: signInController.passwordController),
               ],)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -93,16 +95,18 @@ class _SignInViewState extends State<SignInView> {
                     },
                       child: CustomText(text: "Forgot Password?",color: Theme.of(context).colorScheme.secondary)),
               ],),
-              CustomButton(
-                loading: loading,
-                onPressed: (){
-                if(_formField.currentState!.validate()){
-                  signIn();
-                }
-                },
-                text: 'Log in',
-                color: Theme.of(context).colorScheme.primary,
-                borderColor: Theme.of(context).colorScheme.primary,
+              Obx(()=>
+                  CustomButton(
+                    loading: signInController.loading.value,
+                    onPressed: (){
+                      if(_formField.currentState!.validate()){
+                        signInController.signIn(context);
+                      }
+                    },
+                    text: 'Log in',
+                    color: Theme.of(context).colorScheme.primary,
+                    borderColor: Theme.of(context).colorScheme.primary,
+                  )
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -1,12 +1,7 @@
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get.dart';
-import 'package:practice_ryde/src/controllers/constants/linker.dart';
-import 'package:practice_ryde/src/utils/utils.dart';
-import 'package:toastification/toastification.dart';
+
+import '../../../controllers/constants/linker.dart';
 
 class SignUpController extends GetxController{
 

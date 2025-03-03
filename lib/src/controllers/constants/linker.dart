@@ -44,3 +44,10 @@ export 'package:practice_ryde/src/view/ride_in_process_view/ride_ratting_view/ri
 export 'package:get/get.dart';
 export 'package:get/get_core/src/get_main.dart';
 export 'package:practice_ryde/src/view/authviews/signupview/sign_up_controller.dart';
+export 'package:firebase_auth/firebase_auth.dart';
+export 'package:flutter/material.dart';
+export 'package:get/get_state_manager/get_state_manager.dart';
+export 'package:get/get.dart';
+export 'package:practice_ryde/src/controllers/constants/linker.dart';
+export 'package:practice_ryde/src/utils/utils.dart';
+export 'package:toastification/toastification.dart';

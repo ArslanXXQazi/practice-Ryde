@@ -1,9 +1,6 @@
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:practice_ryde/src/utils/utils.dart';
-import 'package:toastification/toastification.dart';
 
 
 
@@ -98,7 +95,8 @@ TextEditingController emailController=TextEditingController();
               PasswordTextFormField(hintText: 'Create a password', controller:signupcontroller.passwordController),
             ],)),
 
-              Obx(()=>CustomButton(
+              Obx(()=>
+                  CustomButton(
                  loading: signupcontroller.loading.value,
                 onPressed: () {
                   if(_formField.currentState!.validate()){
@@ -110,18 +108,6 @@ TextEditingController emailController=TextEditingController();
                    borderColor: Theme.of(context).colorScheme.primary,
 
               )),
-              // CustomButton(
-              //   loading: loading,
-              //   onPressed: ()
-              //   {
-              //    if(_formField.currentState!.validate()){
-              //      signUp();
-              //    }
-              //   },
-              //   text: 'Sign Up',
-              //   color:Theme.of(context).colorScheme.primary,
-              //   borderColor: Theme.of(context).colorScheme.primary,
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
