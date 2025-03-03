@@ -15,15 +15,7 @@ class _SignUpViewState extends State<SignUpView> {
   SignUpController signupcontroller = Get.put(SignUpController());
   final _formField=GlobalKey<FormState> ();
   final SignUpController signupController = Get.put(SignUpController());
-
- @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    nameController.dispose();
-    passwordController.dispose();
-    emailController.dispose();
-  }
+  
 
   // void signUp() async
   // {
