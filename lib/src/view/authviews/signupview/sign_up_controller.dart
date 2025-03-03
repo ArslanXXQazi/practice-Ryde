@@ -61,7 +61,7 @@ class SignUpController extends GetxController{
 
       User? user=userCredential.user;
 
-      if(user ! = null)
+      if(user!=null)
         {
           await user.updateDisplayName(nameController.text.toString());
           await user.sendEmailVerification();
@@ -85,6 +85,9 @@ class SignUpController extends GetxController{
         Theme.of(context).colorScheme.background,
         ToastificationType.error,
       );
+    }
+    finally{
+      loading.value=false;
     }
   }
 
