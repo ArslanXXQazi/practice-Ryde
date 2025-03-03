@@ -42,7 +42,9 @@ import '../../../controllers/constants/linker.dart';
 //}
 
 
-class SignUpController
+class SignUpController extends GetxController{
+  
+}
 
 
 // import 'package:flutter/cupertino.dart';
