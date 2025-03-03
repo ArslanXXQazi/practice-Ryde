@@ -64,6 +64,7 @@ class SignUpController extends GetxController{
       if(user ! = null)
         {
           await user.updateDisplayName(nameController.text.toString());
+          await user.sendEmailVerification();
         }
 
 
