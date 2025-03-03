@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 import 'package:practice_ryde/src/utils/utils.dart';
 import 'package:practice_ryde/src/view/authviews/signinview/sign_in_controller.dart';
-import 'package:toastification/toastification.dart';
 
 class SignInView extends StatefulWidget {
   SignInView({super.key});
@@ -17,7 +16,7 @@ class _SignInViewState extends State<SignInView> {
 
   final _formField=GlobalKey<FormState> ();
   SignInController signInController=Get.put(SignInController());
-  
+
   @override
   Widget build(BuildContext context) {
     final width=MediaQuery.sizeOf(context).width;
