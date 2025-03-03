@@ -43,7 +43,11 @@ import '../../../controllers/constants/linker.dart';
 
 
 class SignUpController extends GetxController{
-  
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  var loading = false.obs;
+  FirebaseAuth _auth = FirebaseAuth.instance;
 }
 
 
