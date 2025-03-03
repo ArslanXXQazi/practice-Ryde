@@ -65,6 +65,12 @@ class SignUpController extends GetxController{
         {
           await user.updateDisplayName(nameController.text.toString());
           await user.sendEmailVerification();
+          Utils().toastMsg(
+          "Verification email sent. Please verify your email.",
+          context,
+          Theme.of(context).colorScheme.background,
+          ToastificationType.success,
+        );
         }
 
 
