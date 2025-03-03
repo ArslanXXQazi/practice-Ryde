@@ -53,6 +53,15 @@ class SignUpController extends GetxController{
   void signUp (BuildContext context) async{
 
     loading.value=true;
+    try{
+      UserCredential userCredential= await _auth.createUserWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.toString()
+      );
+    }
+    catch (e){
+
+    }
   }
 
 }
