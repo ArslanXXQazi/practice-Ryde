@@ -14,11 +14,9 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  
+
   final _formField=GlobalKey<FormState> ();
   SignInController signInController=Get.put(SignInController());
-  // bool loading=false;
-  // FirebaseAuth _auth=FirebaseAuth.instance;
 
   // void signIn() async
   // {
