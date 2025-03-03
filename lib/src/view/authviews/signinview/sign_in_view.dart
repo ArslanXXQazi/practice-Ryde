@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 import 'package:practice_ryde/src/view/authviews/signinview/sign_in_controller.dart';
