@@ -15,7 +15,7 @@ class _SignUpViewState extends State<SignUpView> {
   SignUpController signupcontroller = Get.put(SignUpController());
   final _formField=GlobalKey<FormState> ();
   final SignUpController signupController = Get.put(SignUpController());
-  
+
   @override
   Widget build(BuildContext context) {
     final width=MediaQuery.sizeOf(context).width;

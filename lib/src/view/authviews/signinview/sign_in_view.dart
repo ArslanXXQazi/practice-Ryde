@@ -14,9 +14,7 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-
-  // TextEditingController passwordController=TextEditingController();
-  // TextEditingController emailController=TextEditingController();
+  
   final _formField=GlobalKey<FormState> ();
   SignInController signInController=Get.put(SignInController());
   // bool loading=false;
