@@ -43,6 +43,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:practice_ryde/src/controllers/constants/linker.dart';
 import 'package:toastification/toastification.dart';
 
 class ForgotPasswordView extends StatelessWidget {

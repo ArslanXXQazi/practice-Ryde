@@ -65,22 +65,25 @@ import 'package:toastification/toastification.dart';
 //import 'reset_password.dart';  // Reset password screen ka import
 
 class OtpConfirmationView extends StatelessWidget {
-  final int otp;
-  OtpConfirmationView({super.key, required this.otp, required String generatedOtp});
+  final String generatedOtp;
+  OtpConfirmationView({super.key, required this.generatedOtp});
 
-  TextEditingController firstController = TextEditingController();
-  TextEditingController secondController = TextEditingController();
-  TextEditingController thirdController = TextEditingController();
-  TextEditingController fourthController = TextEditingController();
-  TextEditingController fifthController = TextEditingController();
+  final List<TextEditingController> controllers = List.generate(5, (index) => TextEditingController());
 
   void verifyOTP(BuildContext context) {
-    String enteredOTP = "${firstController.text}${secondController.text}${thirdController.text}${fourthController.text}${fifthController.text}";
-    if (enteredOTP == otp.toString()) {
-      print("OTP Verified!");
-      // Yahaan next screen ka navigation ya success message dikhana hai
+    String enteredOTP = controllers.map((c) => c.text).join();
+    if (enteredOTP == generatedOtp) {
+      toastification.show(
+        context: context,
+        title: Text("OTP Verified!"),
+        autoCloseDuration: Duration(seconds: 3),
+      );
     } else {
-      print("Invalid OTP");
+      toastification.show(
+        context: context,
+        title: Text("Invalid OTP"),
+        autoCloseDuration: Duration(seconds: 3),
+      );
     }
   }
 
@@ -97,38 +100,42 @@ class OtpConfirmationView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Image(
-                  image: AssetImage(Appimages.appLogo),
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
+                child: Icon(Icons.verified, size: 100, color: Colors.green),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: height * .04),
-                child: BoldText(text: 'OTP Confirmation', color: Theme.of(context).colorScheme.secondary),
+                child: Text('OTP Confirmation',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
               ),
-              CustomText(text: 'Please enter the 5-digit code sent to your email for confirmation',
-                  color: Theme.of(context).colorScheme.secondary),
+              Text('Please enter the 5-digit code sent to your email for confirmation'),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: height * .02, horizontal: width * .02),
                 child: Row(
-                  children: [
-                    Expanded(child: OtpTextformfield(controller: firstController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: secondController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: thirdController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: fourthController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: fifthController)),
-                  ],
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(5, (index) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: width * .02),
+                      child: SizedBox(
+                        width: 50,
+                        child: TextField(
+                          controller: controllers[index],
+                          textAlign: TextAlign.center,
+                          keyboardType: TextInputType.number,
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            counterText: "",
+                            border: OutlineInputBorder(),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
                 ),
               ),
-              CustomButton(
+              SizedBox(height: 20),
+              ElevatedButton(
                 onPressed: () => verifyOTP(context),
-                text: 'Confirm OTP',
-                color: Theme.of(context).colorScheme.primary,
-                borderColor: Theme.of(context).colorScheme.primary,
+                child: Text("Confirm OTP"),
               ),
             ],
           ),
