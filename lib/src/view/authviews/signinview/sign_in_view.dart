@@ -17,44 +17,7 @@ class _SignInViewState extends State<SignInView> {
 
   final _formField=GlobalKey<FormState> ();
   SignInController signInController=Get.put(SignInController());
-
-  // void signIn() async
-  // {
-  //   setState(() {
-  //     loading=true;
-  //   });
-  //   await _auth.signInWithEmailAndPassword(
-  //       email: emailController.text,
-  //       password: passwordController.text).then((value){
-  //     setState(() {
-  //       loading=false;
-  //       Utils().toastMsg(
-  //           "Login Successfully",
-  //           context,
-  //           Theme.of(context).colorScheme.background,
-  //           ToastificationType.success
-  //       );
-  //       emailController.clear();
-  //       passwordController.clear();
-  //       Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
-  //
-  //     });
-  //
-  //   }).onError((e,handlee) {
-  //     setState(() {
-  //       loading=false;
-  //     });
-  //     Utils().toastMsg(
-  //         e.toString(),
-  //         context,
-  //         Theme.of(context).colorScheme.background,
-  //         ToastificationType.error
-  //     );
-  //   });
-  // }
-
-
-
+  
   @override
   Widget build(BuildContext context) {
     final width=MediaQuery.sizeOf(context).width;
