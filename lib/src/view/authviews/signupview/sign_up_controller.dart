@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:practice_ryde/src/view/authviews/signupview/email_verification_screen.dart';
 
 import '../../../controllers/constants/linker.dart';
 class SignUpController extends GetxController{
@@ -35,6 +36,8 @@ class SignUpController extends GetxController{
           nameController.clear();
           emailController.clear();
           passwordController.clear();
+
+         // Get.to(() => EmailVerificationScreen(user: user));
 
         }
     }
