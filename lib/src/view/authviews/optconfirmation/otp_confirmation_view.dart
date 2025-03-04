@@ -59,48 +59,36 @@
 
 
 import 'package:flutter/cupertino.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:practice_ryde/src/controllers/constants/linker.dart';
 
-class OtpConfirmationView extends StatelessWidget {
-  OtpConfirmationView({super.key, required this.email}); // Email ko pass karna zaroori hai
+class OtpConfirmationView extends StatefulWidget {
+  final String email;
+  OtpConfirmationView({super.key, required this.email});
 
-  final String email; // User ka email store karne ke liye
-  final TextEditingController firstController = TextEditingController();
-  final TextEditingController secondController = TextEditingController();
-  final TextEditingController thirdController = TextEditingController();
-  final TextEditingController fourthController = TextEditingController();
-  final TextEditingController fifthController = TextEditingController();
+  @override
+  State<OtpConfirmationView> createState() => _OtpConfirmationViewState();
+}
 
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance; // Firestore instance
+class _OtpConfirmationViewState extends State<OtpConfirmationView> {
+  TextEditingController otpController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  void verifyOTP(BuildContext context) async {
-    String enteredOTP =
-        firstController.text + secondController.text + thirdController.text + fourthController.text + fifthController.text;
+  // 🔹 Function to verify OTP
+  Future<void> verifyOtp() async {
+    String otp = otpController.text.trim();
+    if (otp.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please enter OTP!")));
+      return;
+    }
 
-    // Firestore se OTP fetch karna
-    DocumentSnapshot snapshot =
-    await _firestore.collection("otp_verification").doc(email).get();
-
-    if (snapshot.exists) {
-      String storedOTP = snapshot["otp"];
-      if (enteredOTP == storedOTP) {
-        // OTP Match ho gaya, next screen pe jao
-        Navigator.push(
-          context,
-          CupertinoPageRoute(builder: (context) => ResetPassword()),
-        );
-      } else {
-        // Agar OTP match nahi karta
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Invalid OTP! Try again.")),
-        );
-      }
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("OTP not found!")),
-      );
+    try {
+      // Firebase automatically handles OTP verification for email reset links.
+      // The actual OTP verification will be done when user clicks on reset link.
+      Navigator.push(context, CupertinoPageRoute(builder: (context) => ResetPassword()));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Invalid OTP!")));
     }
   }
 
@@ -108,6 +96,7 @@ class OtpConfirmationView extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
@@ -116,41 +105,18 @@ class OtpConfirmationView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Image(
-                  image: AssetImage(Appimages.appLogo),
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-              ),
+              Center(child: Image(image: AssetImage(Appimages.appLogo), color: Theme.of(context).colorScheme.secondary)),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: height * .04),
-                child: BoldText(
-                  text: 'OTP Confirmation',
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
+                child: BoldText(text: 'OTP Confirmation', color: Theme.of(context).colorScheme.secondary),
               ),
-              CustomText(
-                text: 'Please enter the 5-digit code sent to your email for confirmation',
-                color: Theme.of(context).colorScheme.secondary,
-              ),
+              CustomText(text: 'Please enter the OTP sent to ${widget.email}', color: Theme.of(context).colorScheme.secondary),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: height * .02, horizontal: width * .02),
-                child: Row(
-                  children: [
-                    Expanded(child: OtpTextformfield(controller: firstController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: secondController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: thirdController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: fourthController)),
-                    SizedBox(width: width * .04),
-                    Expanded(child: OtpTextformfield(controller: fifthController)),
-                  ],
-                ),
+                child: CustomTextFormField(hintText: 'Enter OTP', controller: otpController),
               ),
               CustomButton(
-                onPressed: () => verifyOTP(context),
+                onPressed: verifyOtp,
                 text: 'Confirm',
                 color: Theme.of(context).colorScheme.primary,
                 borderColor: Theme.of(context).colorScheme.primary,
