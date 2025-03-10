@@ -65,22 +65,7 @@ class _SignUpViewState extends State<SignUpView> {
                 CustomText(text: "Already a member?",color: Theme.of(context).colorScheme.secondary),
                 TextButton(
                     onPressed: (){
-                     Navigator.pop(context);
-                    },
-                    child: BoldText(text: 'Log in',fontSize: 16,color: Theme.of(context).colorScheme.secondary),
-                ),
-              ],),
-              Padding(
-                padding:  EdgeInsets.only(bottom: height*.01),
-                child: Center(child: BoldText(text: 'Or',fontSize: 20,color: Theme.of(context).colorScheme.secondary)),
-              ),
-              SocialButton(
-                  onPressed: (){},
-                  image: Appimages.google,
-                  text: "Continue with Google"
-              ),
-              SocialButton(
-                  onPressed: (){},
+                     Naviga
                   image: Appimages.apple,
                   text: "Continue with Apple"
               )
