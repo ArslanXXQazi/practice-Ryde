@@ -62,7 +62,13 @@ class _SignUpViewState extends State<SignUpView> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                CustomText(tex
+                CustomText(text: "Already a member?",color: Theme.of(context).colorScheme.secondary),
+                TextButton(
+                    onPressed: (){
+                     Navigator.pop(context);
+                    },
+                    child: BoldText(text: 'Log in',fontSize: 16,color: Theme.of(context).colorScheme.secondary),
+                ),
               ],),
               Padding(
                 padding:  EdgeInsets.only(bottom: height*.01),
