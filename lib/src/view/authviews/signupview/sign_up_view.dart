@@ -67,15 +67,6 @@ class _SignUpViewState extends State<SignUpView> {
                     onPressed: (){
                      Navigator.pop(context);
                     },
-                    child: BoldText(text: 'Log in',fontSize: 16,color: Theme.of(context).colorScheme.secondary),
-                ),
-              ],),
-              Padding(
-                padding:  EdgeInsets.only(bottom: height*.01),
-                child: Center(child: BoldText(text: 'Or',fontSize: 20,color: Theme.of(context).colorScheme.secondary)),
-              ),
-              SocialButton(
-                  onPressed: (){},
                   image: Appimages.google,
                   text: "Continue with Google"
               ),
