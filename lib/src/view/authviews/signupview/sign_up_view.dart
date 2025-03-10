@@ -71,7 +71,19 @@ class _SignUpViewState extends State<SignUpView> {
                 ),
               ],),
               Padding(
-                padding:  
+                padding:  EdgeInsets.only(bottom: height*.01),
+                child: Center(child: BoldText(text: 'Or',fontSize: 20,color: Theme.of(context).colorScheme.secondary)),
+              ),
+              SocialButton(
+                  onPressed: (){},
+                  image: Appimages.google,
+                  text: "Continue with Google"
+              ),
+              SocialButton(
+                  onPressed: (){},
+                  image: Appimages.apple,
+                  text: "Continue with Apple"
+              )
             ],),
         ),
       ),
