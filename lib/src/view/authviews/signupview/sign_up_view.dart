@@ -55,6 +55,13 @@ class _SignUpViewState extends State<SignUpView> {
                   }
                 },
                   text: "Sign Up",
+                  color:Theme.of(context).colorScheme.primary,
+                   borderColor: Theme.of(context).colorScheme.primary,
+
+              )),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                 CustomText(text: "Already a member?",color: Theme.of(context).colorScheme.secondary),
                 TextButton(
                     onPressed: (){
