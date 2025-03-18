@@ -1,15 +1,15 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:practice_ryde/src/view/authviews/signupview/email_verification_screen.dart';
-
 import '../../../controllers/constants/linker.dart';
 class SignUpController extends GetxController{
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+
   var loading = false.obs;
   FirebaseAuth _auth = FirebaseAuth.instance;
-
 
   void signUp (BuildContext context) async{
 
@@ -24,20 +24,21 @@ class SignUpController extends GetxController{
 
       if(user!=null)
         {
-          await user.updateDisplayName(nameController.text.toString());
-          await user.sendEmailVerification();
+          String userId=user.uid;
+          await FirebaseFirestore.instance.collection('userData').doc(userId).set({
+            'userId':userId,
+            'email': emailController.text.trim(),
+            'name' : nameController.text,
+          });
           Utils().toastMsg(
-          "Verification email sent. Please verify your email.",
+          "Account Create Successfully",
           context,
           Theme.of(context).colorScheme.background,
           ToastificationType.success,
         );
-
           nameController.clear();
           emailController.clear();
           passwordController.clear();
-
-         // Get.to(() => EmailVerificationScreen(user: user));
 
         }
     }

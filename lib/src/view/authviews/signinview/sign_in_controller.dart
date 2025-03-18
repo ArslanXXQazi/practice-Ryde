@@ -23,7 +23,7 @@ void signIn(BuildContext context ) async
         ToastificationType.success);
           emailController.clear();
           passwordController.clear();
-          Navigator.push(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
+          Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=>NavBarView()));
   }).onError((e,handlee) {
     loading.value=false;
     Utils().toastMsg(

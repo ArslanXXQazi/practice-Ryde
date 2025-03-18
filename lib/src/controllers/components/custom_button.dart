@@ -6,13 +6,15 @@ class CustomButton extends StatelessWidget {
   Color color;
   Color fontColor;
   Color borderColor;
+  double fontSize;
    CustomButton({super.key,
      required this.text,
      required this.onPressed,
      this.color=Colors.yellow,
      this.fontColor=Colors.white,
      this.borderColor=Colors.grey,
-     this.loading=false
+     this.loading=false,
+     this.fontSize=16
    });
 
   @override
@@ -31,7 +33,7 @@ class CustomButton extends StatelessWidget {
                 side: BorderSide(color: borderColor),
               )
           ),
-          child: Center(child: loading ? CircularProgressIndicator(color: Colors.white,):CustomText(text: text,color: fontColor,fontSize: 16,),)),
+          child: Center(child: loading ? CircularProgressIndicator(color: Colors.white,):CustomText(text: text,color: fontColor,fontSize: fontSize,),)),
     );
   }
 }

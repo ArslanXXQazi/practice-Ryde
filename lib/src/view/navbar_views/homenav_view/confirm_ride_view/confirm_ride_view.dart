@@ -241,11 +241,12 @@ class _ConfirmRideViewState extends State<ConfirmRideView> {
                           }
                         },
                         text: 'Schedule for Later',
+                        fontSize: 15,
                         color: Theme.of(context).colorScheme.background,
                         fontColor: Theme.of(context).colorScheme.secondary,
                       ),
                       ),
-                      SizedBox(width: width*.03,),
+                      SizedBox(width: width*.02,),
                       Expanded(child:
                       CustomButton(
                         onPressed: ()
@@ -287,6 +288,7 @@ class _ConfirmRideViewState extends State<ConfirmRideView> {
                           }
                         },
                         text: 'Find Drivers',
+                        fontSize: 15,
                         color: Theme.of(context).colorScheme.primary,
                         borderColor: Theme.of(context).colorScheme.primary,
                       ),
