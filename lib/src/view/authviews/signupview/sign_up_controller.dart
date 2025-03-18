@@ -30,6 +30,7 @@ class SignUpController extends GetxController{
             'email': emailController.text.trim(),
             'name' : nameController.text,
           });
+          Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
           Utils().toastMsg(
           "Account Create Successfully",
           context,
@@ -39,7 +40,6 @@ class SignUpController extends GetxController{
           nameController.clear();
           emailController.clear();
           passwordController.clear();
-
         }
     }
     catch (e){
