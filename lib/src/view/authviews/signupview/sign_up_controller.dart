@@ -29,6 +29,9 @@ class SignUpController extends GetxController{
             'userId':userId,
             'email': emailController.text.trim(),
             'name' : nameController.text,
+            'photoUrl':'',
+            'userPhone':'',
+            'userAddress':''
           });
           Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
           Utils().toastMsg(
