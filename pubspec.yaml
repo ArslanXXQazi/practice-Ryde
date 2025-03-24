@@ -45,6 +45,8 @@ dependencies:
   toastification:
   mailer:
   cloud_firestore:
+  http:
+  geolocator:
 
 dev_dependencies:
   flutter_test:

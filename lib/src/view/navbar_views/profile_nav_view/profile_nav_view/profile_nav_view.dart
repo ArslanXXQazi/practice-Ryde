@@ -80,7 +80,7 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               BoldText(text: 'Are you sure you want to log out?',fontSize: 16,color: Theme.of(context).colorScheme.secondary,),
-                              Image(image: AssetImage('assets/alert.png')).animate().rotate(duration: Duration(seconds: 2)),
+                             // Image(image: AssetImage('assets/alert.png')).animate().rotate(duration: Duration(seconds: 2)),
                               SizedBox(height: height*.02,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
