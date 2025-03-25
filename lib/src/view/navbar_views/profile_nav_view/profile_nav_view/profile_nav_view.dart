@@ -1,8 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+
+
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 import 'package:practice_ryde/src/controllers/components/profile_container.dart';
-import 'package:practice_ryde/src/controllers/constants/linker.dart';
+import 'package:practice_ryde/src/controllers/components/rich_text_form_field.dart';
+import 'package:practice_ryde/src/view/navbar_views/profile_nav_view/edit_profile_view/edit_profile_controller.dart';
+import 'package:practice_ryde/src/view/navbar_views/profile_nav_view/profile_nav_view/profile_nav_controller.dart';
+
+import '../../../../controllers/constants/linker.dart';
+
 
 class ProfileNavView extends StatefulWidget {
 
@@ -15,10 +23,10 @@ class ProfileNavView extends StatefulWidget {
 }
 
 class _ProfileNavViewState extends State<ProfileNavView> {
+
+  ProfileNAvController profileNAvController=Get.put(ProfileNAvController());
+
   @override
-
-  final FirebaseAuth auth=FirebaseAuth.instance;
-
   Widget build(BuildContext context) {
     final width=MediaQuery.sizeOf(context).width;
     final height=MediaQuery.sizeOf(context).height;
@@ -80,39 +88,30 @@ class _ProfileNavViewState extends State<ProfileNavView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               BoldText(text: 'Are you sure you want to log out?',fontSize: 16,color: Theme.of(context).colorScheme.secondary,),
-                             // Image(image: AssetImage('assets/alert.png')).animate().rotate(duration: Duration(seconds: 2)),
+                              // Image(image: AssetImage('assets/alert.png')).animate().rotate(duration: Duration(seconds: 2)),
                               SizedBox(height: height*.02,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ElevatedButton(
-                                      onPressed: (){Navigator.pop(context);},
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Theme.of(context).colorScheme.background,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                            side: BorderSide(color: Appcolor.grey),
-                                          )
+                                  Expanded(child:CustomButton(
+                                    onPressed: (){Navigator.pop(context);},
+                                      text: 'Go Back',
+                                    borderColor:Theme.of(context).colorScheme.secondary,
+                                    color:Theme.of(context).colorScheme.background,
+                                    fontColor:Theme.of(context).colorScheme.secondary,
                                       ),
-                                      child:CustomText(text: 'Go Back',color: Theme.of(context).colorScheme.secondary,)
                                   ),
                                   SizedBox(width: width*.06,),
-                                  ElevatedButton(
-                                      onPressed: () async{
-                                        await auth.signOut().then((onValue){
-                                          Navigator.push(context, CupertinoPageRoute(builder: (context)=>SignInView()));
-                                        }).onError((error,handleError){
+                                  Expanded(child: CustomButton(
+                                    onPressed: () {
+                                      profileNAvController.signOut(context);
+                                    },
+                                    text: "Log Out",
+                                    borderColor:Theme.of(context).colorScheme.primary,
+                                    color:Theme.of(context).colorScheme.primary,
+                                    fontColor:Theme.of(context).colorScheme.secondary,
+                                  ))
 
-                                        });
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Theme.of(context).colorScheme.primary,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(10),
-                                          )
-                                      ),
-                                      child:CustomText(text: 'Log Out',color: Theme.of(context).colorScheme.secondary,)
-                                  ),
                                 ],)
                             ],
                           ),
