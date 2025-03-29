@@ -1,16 +1,6 @@
-import 'package:path/path.dart' as path;
-import 'dart:convert';
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:http/io_client.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import '../../../../controllers/constants/linker.dart';
-import 'package:http/http.dart' as http;
-import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+
+
+import 'package:practice_ryde/src/controllers/constants/linker.dart';
 
 class EditProfileController extends GetxController {
   static EditProfileController get instance =>
