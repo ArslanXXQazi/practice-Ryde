@@ -10,7 +10,6 @@ import '../../../../controllers/constants/linker.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
