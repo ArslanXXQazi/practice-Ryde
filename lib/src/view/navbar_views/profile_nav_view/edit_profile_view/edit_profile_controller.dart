@@ -7,12 +7,6 @@ import 'package:http/io_client.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../../../controllers/constants/linker.dart';
-import 'dart:io';
-import 'package:dio/dio.dart';
-import 'dart:io';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -56,7 +50,6 @@ class EditProfileController extends GetxController {
     super.onInit();
     fetchUserData();
   }
-<<<<<<< HEAD
 
   // Update profile information including image if selected
   void updateProfile(BuildContext context) async {
@@ -73,15 +66,11 @@ class EditProfileController extends GetxController {
       return;
     }
 
-=======
-  Future<void> updateProfile() async {
->>>>>>> 2b3d023c57a5d70e8eaefd5f4b670b58537937a8
     try {
       String imageUrl = networkImageUrl.value;
 
       // If user selected a new image, upload it
       if (selectedImage.value != null) {
-<<<<<<< HEAD
         isUploadingImage.value = true;
 
         try {
@@ -97,16 +86,6 @@ class EditProfileController extends GetxController {
           }
         } catch (e) {
           print("Error during image upload: $e");
-=======
-        String apiEndpoint = 'http://api.codytech.solutions/api/RydeFileUpload/CustomerImage';
-        final uploadResult = await _uploadImage(selectedImage.value!);
-
-        if (uploadResult != null) {
-          photoUrl = uploadResult;
-          Get.snackbar('Success', 'Image uploaded successfully', snackPosition: SnackPosition.TOP);
-        } else {
-          throw 'Failed to upload image. Please try again.';
->>>>>>> 2b3d023c57a5d70e8eaefd5f4b670b58537937a8
         }
       }
 
@@ -143,7 +122,6 @@ class EditProfileController extends GetxController {
     }
   }
 
-<<<<<<< HEAD
   // Fetch user data from Firestore
   void fetchUserData() async {
     isLoading.value = true;
@@ -154,143 +132,6 @@ class EditProfileController extends GetxController {
     try {
       DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection(
           'userData').doc(userId).get();
-=======
-  Future<String?> _uploadImage(File file) async {
-    try {
-      var uri = Uri.parse('http://api.codytech.solutions/api/RydeFileUpload/CustomerImage');
-      var client = http.Client();
-
-      // Create initial request
-      var request = http.MultipartRequest('POST', uri)
-        ..files.add(await http.MultipartFile.fromPath('file', file.path));
-
-      // Send request with redirect handling
-      var response = await client.send(request).timeout(const Duration(seconds: 30));
-
-      // Handle redirects manually
-      while (response.statusCode == 307 || response.statusCode == 301 || response.statusCode == 302) {
-        var redirectUrl = response.headers['location'];
-        if (redirectUrl == null) {
-          throw 'Redirect URL not found in response headers';
-        }
-
-        // Update the request with new URL
-        request = http.MultipartRequest('POST', Uri.parse(redirectUrl))
-          ..files.add(await http.MultipartFile.fromPath('file', file.path));
-
-        response = await client.send(request);
-      }
-
-      print('Final Response status: ${response.statusCode}');
-
-      // Convert streamed response to normal response
-      var finalResponse = await http.Response.fromStream(response);
-      print('Final Response body: ${finalResponse.body}');
-
-      if (response.statusCode == 200) {
-        try {
-          var jsonResponse = json.decode(finalResponse.body);
-          if (jsonResponse['filePath'] != null) {
-            return jsonResponse['filePath'];
-          } else {
-            throw 'filePath not found in response';
-          }
-        } catch (e) {
-          throw 'Invalid JSON response: $e';
-        }
-      } else {
-        throw 'Server error: ${response.statusCode} - ${finalResponse.body}';
-      }
-    } catch (e) {
-      print('Upload error: $e');
-      throw 'Image upload failed: $e';
-    } finally {
-      // Clean up
-     // client.close();
-    }
-  }
-  // Future<void> updateProfile() async {
-  //   try {
-  //     isLoading.value = true;
-  //     errorMessage.value = '';
-  //
-  //     String userId = firebaseAuth.currentUser?.uid ?? "";
-  //     if (userId.isEmpty) {
-  //       throw 'User not found';
-  //     }
-  //
-  //     String? photoUrl = '';
-  //     if (selectedImage.value != null) {
-  //       String apiEndpoint = 'http://api.codytech.solutions/api/RydeFileUpload/CustomerImage';
-  //       final uploadResult = await _uploadImage(selectedImage.value!, );
-  //
-  //       if (uploadResult != null) {
-  //         photoUrl = uploadResult;
-  //         Get.snackbar('Success', 'Image uploaded successfully', snackPosition: SnackPosition.TOP);
-  //       } else {
-  //         throw 'Failed to upload image';
-  //       }
-  //     }
-  //
-  //     await FirebaseFirestore.instance.collection('userData').doc(userId).update({
-  //       'name': nameController.text.trim(),
-  //       'email': emailController.text.trim(),
-  //       'userPhone': phoneController.text.trim(),
-  //       'userAddress': addressController.text.trim(),
-  //       'photoUrl': photoUrl,
-  //     });
-  //
-  //     Get.snackbar('Success', 'Profile updated successfully', snackPosition: SnackPosition.TOP);
-  //     Get.back();
-  //   } catch (e) {
-  //     print("Error in updateProfile: $e");
-  //     errorMessage.value = e.toString();
-  //     Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.TOP);
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
-  //
-  //
-  //
-  // Future<String?> _uploadImage(File file) async {
-  //   try {
-  //     var uri = Uri.parse('http://api.codytech.solutions/api/RydeFileUpload/CustomerImage');
-  //
-  //     var request = http.MultipartRequest('POST', uri)
-  //       ..files.add(await http.MultipartFile.fromPath('file', file.path));
-  //
-  //     var streamedResponse = await request.send();
-  //     var response = await http.Response.fromStream(streamedResponse);
-  //
-  //     print('Response status: ${response.statusCode}');
-  //     print('Response body: ${response.body}');
-  //
-  //     if (response.statusCode == 200) {
-  //       var jsonResponse = json.decode(response.body);
-  //       return jsonResponse['filePath'];
-  //     } else {
-  //       return null;
-  //     }
-  //   } catch (e) {
-  //     print('Upload error: $e');
-  //     return null;
-  //   }
-  // }
-  Future<void> fetchUserData() async {
-    try {
-      isLoading.value = true;
-      errorMessage.value = '';
-
-      String userId = firebaseAuth.currentUser?.uid ?? "";
-      if (userId.isEmpty) return;
-
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance
-          .collection('userData')
-          .doc(userId)
-          .get()
-          .timeout(const Duration(seconds: 10));
->>>>>>> 2b3d023c57a5d70e8eaefd5f4b670b58537937a8
 
       if (userDoc.exists) {
         var data = userDoc.data() as Map<String, dynamic>;
