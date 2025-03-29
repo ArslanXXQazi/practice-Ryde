@@ -1,7 +1,17 @@
-
-
-import 'package:practice_ryde/src/controllers/constants/linker.dart';
-
+import 'dart:io';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:http/http.dart' as http;
+import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart';
+import 'package:http/io_client.dart';
+import 'package:toastification/toastification.dart';  // Ensure you have this package installed
+import 'package:practice_ryde/src/controllers/constants/linker.dart';  // Your custom file
 class EditProfileController extends GetxController {
   static EditProfileController get instance =>
       Get.find<EditProfileController>();
