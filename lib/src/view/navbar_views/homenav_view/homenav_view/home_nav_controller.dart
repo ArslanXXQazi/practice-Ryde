@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
-
 import '../../../../controllers/constants/linker.dart';
 
 class HomeNavController extends GetxController{
@@ -25,7 +24,7 @@ class HomeNavController extends GetxController{
         DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('userData').doc(user.uid).get();
         if (userDoc.exists) {
           var data = userDoc.data() as Map<String, dynamic>;
-          userName.value = data['Name'] ?? 'Guest';
+          userName.value = data['name'] ?? 'Guest';
           Future.delayed(Duration(milliseconds: 500), () {
             userName.refresh();
           });

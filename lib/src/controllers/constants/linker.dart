@@ -29,7 +29,6 @@ export 'package:practice_ryde/src/view/navbar_views/notification_nav_views/notif
 export 'package:practice_ryde/src/view/navbar_views/profile_nav_view/profile_nav_view/profile_nav_view.dart';
 export 'package:practice_ryde/src/controllers/components/line_container.dart';
 export 'package:practice_ryde/src/controllers/components/profile_icon_row.dart';
-export 'package:practice_ryde/src/view/navbar_views/profile_nav_view/edit_profile_view/edit_profile_view.dart';
 export 'package:practice_ryde/src/controllers/components/car_detail_container.dart';
 export 'package:practice_ryde/src/controllers/components/profile_row.dart';
 export 'package:practice_ryde/src/controllers/components/cancel_ride_row.dart';
