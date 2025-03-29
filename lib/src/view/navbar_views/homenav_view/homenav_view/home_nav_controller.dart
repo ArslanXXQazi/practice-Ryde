@@ -62,29 +62,40 @@ class HomeNavController extends GetxController{
   var suggestedLocations = <Map<String, dynamic>>[].obs;
 
   Future<void> fetchNearbyLocations() async {
-    Position position = await _determinePosition();
-    String apiKey = "AIzaSyBrRRqr91A35j6PxUhjNRn4UucULfwMOiQ";
-    String url =
-        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.latitude},${position.longitude}&radius=5000&type=point_of_interest&key=$apiKey";
+    print("Fetching nearby locations...");
 
     try {
+      Position position = await _determinePosition();
+      print("Current Location: Lat=${position.latitude}, Lng=${position.longitude}");
+
+      String apiKey = "AIzaSyBrRRqr91A35j6PxUhjNRn4UucULfwMOiQ";
+      String url =
+          "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.latitude},${position.longitude}&radius=5000&type=point_of_interest&key=$apiKey";
+
       final response = await http.get(Uri.parse(url));
+      print("API Request Sent to: $url");
+
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        print("API Response: $data");
+        print("API Response: ${response.body}");
+
         List results = data['results'];
-        // results = results.take(10).toList();
         suggestedLocations.value = results.map((place) {
           return {
             'name': place['name'],
-            'icon': place['icon'] ?? Appimages.location, // Good: Default image agar API se na aaye
+            'icon': place['icon'] ?? Appimages.location,
           };
         }).toList();
+
+        print("Parsed Locations: $suggestedLocations");
+      } else {
+        print("Failed to fetch locations. Status Code: ${response.statusCode}");
       }
     } catch (e) {
       print("Error fetching locations: $e");
     }
   }
+
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
